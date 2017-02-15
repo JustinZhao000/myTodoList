@@ -73,18 +73,18 @@
  	background: #CCC;
  }
 
- .task-datail,.task-detail-mask{
+ .task-detail,.task-detail-mask{
  	position:absolute;
  }
  .task-detail{
- 	height:100%;
+ 	height:280px;
  	width:50%;
  	border-radius: 5px;
  	background:#fff;
  	color:#333;
  	padding:10px;
  	position:absolute;
- 	bottom:0;
+ 	top:0;
  	right:0;
  	display:none;
  }
@@ -125,4 +125,17 @@
  .action:hover{
  	color:#666;
  	font-size: 90%;
+ }
+ .remind{
+ 	height:100%;
+ }
+ .remind button{
+ 	height:40px;	
+ 	width:100%;
+ 	background:rgba(0,76,88,.32);
+ 	position:relative;
+ 	top:10px;
+ 	color:#5F74E4;
+ 	font-size: 20px;
+ 	font-weight: bold;
  }
