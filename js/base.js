@@ -12,7 +12,7 @@
       $task_detail_content,
       $task_detail_content_input;
    init(); 
-  // 点击添加事件    
+  // 点击submit添加事件    
   $form_add_task.on('submit',function(e){
     var new_task={};
   	e.preventDefault();
@@ -35,14 +35,15 @@
   
   // 添加任务
   function add_task(new_task){
-    task_list.push(new_task);
+  
+    task_list.unshift(new_task);
     store.set('task_list',task_list);
     return true;
   }
   
   // 删除语句
   function delete_task(index){   
-    if(!index||!task_list[index]) return;
+    if(index===undefined||!task_list[index]) return;
   
     delete task_list[index];
     refresh_task_list();
@@ -62,7 +63,7 @@
 
   }
 
-  // 渲染画面
+  // 渲染list列表
   function render_task_list(){
     var $task_list=$(".task-list");
     $task_list.html('');
@@ -83,18 +84,18 @@
       var $item=$this.parent();
       var index=$item.data('index');
        //举个例子, 给定下面的HTML:
-// <div data-role="page" data-last-value="43" data-hidden="true" data-options='{"name":"John"}'></div>
-// 下面所有的 jQuery 代码都能运行。
-// $("div").data("role") === "page";
-// $("div").data("lastValue") === 43;
-// $("div").data("hidden") === true;
-// $("div").data("options").name === "John";
+      // <div data-role="page" data-last-value="43" data-hidden="true" data-options='{"name":"John"}'></div>
+      // 下面所有的 jQuery 代码都能运行。
+      // $("div").data("role") === "page";
+      // $("div").data("lastValue") === 43;
+      // $("div").data("hidden") === true;
+      // $("div").data("options").name === "John";
       var temp=confirm('确定删除?');    
       temp?delete_task(index):null;
 
   });
   }
-
+// 监听事件详情
   function listen_task_detail(){
      $task_detail_button.on('click',function(){
          var $this=$(this);
@@ -113,7 +114,7 @@
     $task_list_mask.show();
     
   }
-
+  // 更新task
   function update_task(index,data){
     if(!index||!task_list[index]) return;
     task_list[index]=data;//$.merge({},task_list[index],data)
@@ -126,6 +127,7 @@
   //     show_task_detail(current_index);
 
   // });
+  // 隐藏task详情
   function hide_task_detail(){
     $task_detail.hide();
     $task_list_mask.hide();
@@ -135,8 +137,11 @@
   function render_task_detail(index){
     if(index===undefined||!task_list[index]) return;
     var item=task_list[index];
-    console.log(task_list);
-    console.log(item.content);
+    for(var k in item){
+      if(item.desc===undefined){
+        item.desc='';
+      }
+    }
     var tpl='<form>'+
     '<div class="content">'+item.content+
     '</div>'+
@@ -164,7 +169,7 @@
        $task_detail_content_input.show();
        $task_detail_content.hide();
     });
-
+    // 点击更新
     $update_form.on('submit',function(e){
        e.preventDefault();
        var data={};
@@ -172,17 +177,15 @@
        
        data.desc=$(this).find('[name=desc]').val();
        data.remind_date=$(this).find('[name=remind]').val();
-       console.log(data);
+
        update_task(index,data);
        hide_task_detail();
     });
     
  }
-  // 渲染的語句
+  // 渲染的task語句
   function render_task_item(data,index){
-    console.log(data);
-    console.log(index);
-    if(!data||!index) return;
+    if(!data||index===undefined) return;
    var list_item_tpl='<div class="task-item" data-index="'+index+'">'+'<span><input type="checkbox"> </span>'+
                      '<span class="task-content">'+data.content+'</span>'+'<span class="action fr delete"> Delete</span>'+'<span class="action fr detail"> Detail</span>'+'</div>';
     return $(list_item_tpl);  
