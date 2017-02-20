@@ -59,6 +59,7 @@
  	background:#5fb9e4;
  }
  .task-item{
+ 	position:relative;
  	padding:10px;
  	background:#fff;
  	color:#333;
@@ -67,6 +68,7 @@
  	box-shadow: 0 2px 3px rgba(0,0,0,.4);
  	cursor:pointer;
  	transition:background .3s;
+ 	overflow:hidden;
  }
 
  .task-item:hover{
@@ -138,4 +140,21 @@
  	color:#5F74E4;
  	font-size: 20px;
  	font-weight: bold;
+ }
+
+ .task-item.completed{
+   color:#aaa;
+   background:rgba(255,255,255,.7);
+ }
+
+ .task-item.completed:after{
+ 	content:"";
+ 	height:1px;
+ 	background:#aaa;
+ 	width:96%;
+ 	position:absolute;
+ 	top:17px;
+ 	right:0;
+    display:block;
+    float:right;
  }
