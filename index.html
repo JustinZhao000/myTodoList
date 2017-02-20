@@ -3,15 +3,20 @@
 <head>
 <meta charset="utf-8">
 
-<title>video</title>
+<title>ToDoList</title>
 
 
 
 <link rel="stylesheet" type="text/css" href="css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="js/jquery-datetimepicker/bulid/jquery.datetimepicker.min.css">
 </head>
 
 <body>
+<div class="msg">
+	<span class="msg-content"></span>
+	<button type="button">知道了</button>
+</div>
 <!-- 容器 -->
  <div class="container">
    <h1>我的TODO List</h1>
@@ -44,10 +49,14 @@
  
  <!-- 任務詳情結束 -->
  </div>
+ <audio src="alert.mp3" class="alerter"></audio>
  <!-- 容器結束 -->
 <script src="js/jquery.min.js"></script>
 <script src="js/store/store.min.js"></script>
 <script src="js/base.js"></script>
+<script src="js/jquery-datetimepicker/bulid/jquery.datetimepicker.full.min.js"></script>
+<script src="js/jquery-datetimepicker/bulid/jquery.datetimepicker.min.js"></script>
+
 </body>
 </html>
 

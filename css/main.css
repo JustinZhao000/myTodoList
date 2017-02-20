@@ -158,3 +158,29 @@
     display:block;
     float:right;
  }
+
+ .remind span{
+ 	display:inline-block;
+ 	font-size: 14px;
+ 	font-weight: bold;
+ 	padding:5px 0;
+ }
+
+ .msg{
+ 	display: none;
+ 	text-align:center;
+ 	background:#ffe264;
+ 	padding:10px;
+ 	color:#333;
+ }
+
+ .alerter{
+ 	opacity:0;
+ }
+
+ button.primary{
+ 	background:#46b1e4;
+ 	margin-right: 25px;
+ 	text-align: center;
+ 	margin-top:20px;
+ }
